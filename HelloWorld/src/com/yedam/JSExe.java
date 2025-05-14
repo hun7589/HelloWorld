@@ -10,6 +10,7 @@ public class JSExe {
 			sum += result;
 		}
 		System.out.println("결과: "+sum);
+		test();
 	}// end of main.
 
 	public static void test() {
