@@ -23,9 +23,11 @@ public class JSExe {
 //		test3();
 //		test4();
 //		test2(); // 평균 구하기
-		test0();
+//		test0();
+		test5();
 	}// end of main.
 
+//test	
 	public static void test() {
 		int sum = 0;
 		// 1~10 까지의 누적.
@@ -38,6 +40,7 @@ public class JSExe {
 
 	}// end of test
 
+//test2	
 	public static void test2() {
 		// 임의의 수를 생성. 1~1000 사이의 임의의 값 생성.
 		// 평균 : 173/5 => 34.6
@@ -54,6 +57,7 @@ public class JSExe {
 		System.out.printf("소숫점 둘째자리 까지 표현 : " + "%.2f", x);
 	}// end of test2
 
+//test3
 	public static void test3() {
 
 		// 사용자의 입력값을 읽어들이기.
@@ -71,6 +75,7 @@ public class JSExe {
 		System.out.println("합계: " + sum + ",평균 : " + avg);
 	}// end of test3
 
+//test4
 	public static void test4() {
 
 		Scanner scn = new Scanner(System.in);
@@ -90,20 +95,50 @@ public class JSExe {
 		System.out.println("End of Program.");
 	}
 
+	
 	public static void test0() {
+		
 		Scanner scn = new Scanner(System.in);
 		String str = "친구목록은 ";
+		boolean isFirst = true;
 		while (true) {
 			System.out.println("친구 이름을 입력하세요.");
 			String fri = scn.nextLine();
+			
 			if(fri.equals("quit")) {
 				str +=" 입니다.";
 				break;
 			}
-			str += fri+"  ";
+			
+			if(isFirst) {
+				str+=fri;
+				isFirst = false;
+			}else {
+			str += ","+fri;
 			
 		}
 		System.out.println(str);
 		
-	}// end of JSExe
-}
+	}
+		
+}//end of test0
+	
+	
+//test5
+	public static void test5() {
+		//printf("형식문자열",값1,값2....)
+		System.out.printf("%s %.2f\t","문자",30.455);
+		System.out.println("");
+		//"홍길동",100,23.9
+		System.out.printf("%s %d %.1f","홍길동",100,23.87);
+		//안녕하세요. 이름은 이명훈입니다.
+		//나이는 27세입니다.
+		System.out.printf("\n안녕하세요. 이름은 %s 입니다. \n나이는 %d세입니다. \n몸무게는 %.2f 입니다","이명훈",27,85.67);
+	}
+	
+	
+	
+	
+	
+	
+}// end of JSExe
