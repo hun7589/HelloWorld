@@ -12,7 +12,7 @@ public class MemberExe {
 			System.out.println("1.추가 2.수정 3.삭제 4.조회 5.종료");
 			System.out.println("--------------------------------------------");
 			System.out.print("선택>> ");
-
+ 
 			int selectNo = Integer.parseInt(scn.nextLine());
 
 			switch (selectNo) {
