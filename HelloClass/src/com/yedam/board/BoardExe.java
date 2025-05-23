@@ -31,21 +31,22 @@ public class BoardExe {
 
 	// method.
 	void execute() {
-		boolean run = true;
-		//아이디 입력.
-		//비밀번호 입력.
-		String id = userInput("아이디를 입력");
-		String pw = userInput("비밀번호를 입력");
-		if(!UserExe.login(id,pw)){
-			System.out.println("아이디 혹은 비밀번호를 확인하세요.");
-			return;
+		if(!loginCheck()) {
+			return;//execute의 종료.
 		}
+		boolean run = true;
 		while (run) {
 			System.out.println("========================================");
 			System.out.println("1.추가   2.수정   3.삭제   4.목록   5.종료");
 			System.out.println("========================================");
 			System.out.print("선택>>");
-			int selec = Integer.parseInt(scn.nextLine());
+			//문자를 숫자로 변경 시, 예외발생.
+			int selec = 0;
+			try {
+				selec = Integer.parseInt(scn.nextLine());
+			}catch(NumberFormatException e) {
+				System.out.println("1~5번중에 선택하세요.");
+			}
 			switch (selec) {
 			case 1:// 추가
 				addBoard();
@@ -127,10 +128,18 @@ public class BoardExe {
 				break;// return;
 			} else if (str.equals("n")) {
 				page++;
-			} else {
+			} else if(str.equals("p")) {
+				page--;
+			}else {
 
-				int no = Integer.parseInt(str);
+				int no = 0;
+				try {
 				// 배열에서 조회
+					no = Integer.parseInt(str);//글 번호 입력.
+					}catch(NumberFormatException e) {
+						System.out.println("목록에 있는 글번호를 선택하세요.");
+						continue; //다시 목록부터 보여주기.
+					}
 				Board search = getBoard(no);
 				if (search == null) {
 					System.out.println("조회결과 없음.");
@@ -183,6 +192,27 @@ public class BoardExe {
 
 	void sort() {
 
+	}
+	
+	boolean loginCheck() {
+		// 아이디 입력.
+				// 비밀번호 입력.
+			
+					String id = userInput("아이디를 입력");
+					String pw = userInput("비밀번호를 입력");
+				
+					if (!UserExe.login(id, pw)) {
+						System.out.println("아이디 혹은 비밀번호를 확인하세요.");
+						for (int i = 1; i <= 3; i++) {
+						if (i >= 3) {
+							System.out.println("3번 실패했습니다. 종료합니다.");
+							
+							return false;
+						}
+						continue;
+					}
+					
+				}return true;
 	}
 
 }// end of BoardExe.
