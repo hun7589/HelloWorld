@@ -24,6 +24,6 @@ public class SmartPhone extends CellPhone {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return super.toString()+"channel="+channel+"]";
 	}
 }
