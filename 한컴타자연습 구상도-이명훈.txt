@@ -1,0 +1,43 @@
+
+[한컴 타자연습 프로그램 java+jdbc
+
+1. 시작 흐름도
+==============================
+Main.java
+  LoginUI
+    	 언어 선택 (한국어 / 영어 / 일본어)
+      	 난이도 선택 (초급 / 중급 / 고급 / 전문가)
+         로그인 또는 회원가입
+           	 성공 → 연습 시작
+           	 실패 → 재입력 or 종료
+
+2. 연습 과정
+-------------------------------------
+TypingUI
+ 	연습 텍스트 출력
+	사용자 입력 받기
+	TypingService
+      		 정확도 계산
+      		 속도 계산
+ 	ResultDAO.saveResult() → DB 저장
+  	ResultDAO.showRanking() → 상위 10명 출력
+
+3. DB 연동 구조
+-------------------------------------
+[users]
+ - id, uname, pw
+
+[texts]
+ - id, title, level, language, content
+
+[results]
+ - id, user_id, text_id, speed, accuracy, played_at
+
+4. 패키지 구조
+-------------------------------------
+dao        : DB 입출력 클래스 (UserDAO, TextDAO, ResultDAO)
+model      : 데이터 모델 (User, Result, Text)
+service   : 비즈니스 로직 (TypingService)
+ui          : 콘솔 UI (LoginUI, TypingUI)
+ util       : DB 연결 (DBConnection)
+ Main.java    : 프로그램 시작 지점
